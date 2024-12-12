@@ -151,4 +151,39 @@ describe("Booking", () => {
           });
         });
     });
+
+    it("should be able to remove a shoe by pressing - button", async () => {
+      const navigate = vi.fn();
+      useNavigate.mockReturnValue(navigate);
+  
+      render(
+        <MemoryRouter>
+          <Booking />
+        </MemoryRouter>
+      );
+  
+      const addShoeButton = screen.getByRole('button', { name: /\+/ });
+      fireEvent.click(addShoeButton);
+      
+  
+      const shoeInput = screen.getAllByRole('textbox')[0];
+  
+      fireEvent.change(shoeInput, { target: { value: 40 } }).toString();
+
+      
+      expect(shoeInput).toHaveValue((40).toString());
+
+      const removeShoeButton = screen.getByRole('button', { name: /\-/ });
+
+      await waitFor(() => {
+        expect(screen.queryByRole('textbox')).toBeInTheDocument();
+      });
+
+      fireEvent.click(removeShoeButton)
+
+
+      await waitFor(() => {
+        expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+      });
+  });
 })

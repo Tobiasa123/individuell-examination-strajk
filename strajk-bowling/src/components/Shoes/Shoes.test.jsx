@@ -45,7 +45,7 @@ describe("Shoes", () => {
     );
   });
 
-  it("should allow adding and removing shoes", async () => {
+  it("should allow clicking + and - buttons", async () => {
     const mockUpdateSize = vi.fn();
     const mockAddShoe = vi.fn();
     const mockRemoveShoe = vi.fn();
