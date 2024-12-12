@@ -101,4 +101,27 @@ describe("Booking", () => {
           })
         );
     });
+    it("should allow user to select desired lane amount", () => {
+        
+      const mockUpdateBookingDetails = vi.fn();
+      
+      render(<BookingInfo updateBookingDetails={mockUpdateBookingDetails} />);
+      
+      const laneInput = screen.getByLabelText(/Number of lanes/i);
+
+      fireEvent.change(laneInput, { target: { value: 3 } });
+
+      expect(laneInput.value).toBe("3")
+      
+      
+      expect(mockUpdateBookingDetails).toHaveBeenCalledWith(
+        expect.objectContaining({
+          target: expect.objectContaining({
+            name: "lanes",
+            value: "3"
+          })
+        })
+      );
+      screen.debug()
+  });
 })
