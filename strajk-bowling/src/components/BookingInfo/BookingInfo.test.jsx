@@ -1,16 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import BookingInfo from "./BookingInfo";
 import { fireEvent, render, screen } from "@testing-library/react";
-//import { MemoryRouter } from "react-router-dom";
-
-//Användaren ska kunna välja ett datum och en tid från ett kalender- och tidvalssystem.
-//Användaren ska kunna ange antal spelare (minst 1 spelare).
-//Användaren ska kunna ange skostorlek för varje spelare.
-//Användaren ska kunna ändra skostorlek för varje spelare.
 
 describe("Booking", () => {
 
-    it("should render inputs with correct attributes", () =>{
+    it("should render inputs with correct attributes for them", () =>{
 
         const mockUpdateBookingDetails = vi.fn()
 
@@ -32,7 +26,7 @@ describe("Booking", () => {
         expect(numberOfLanesInput).toBeInTheDocument();
         expect(numberOfLanesInput).toHaveAttribute('type', 'number');
     })
-    it("should allow user to select a date", () => {
+    it("should correctly get the date input value from props", () => {
 
         const mockUpdateBookingDetails = vi.fn();
         
@@ -57,7 +51,7 @@ describe("Booking", () => {
 
         
     });
-    it("show allow user to select a time", () => {
+    it("should correctly get the time input value from props", () => {
         
         const mockUpdateBookingDetails = vi.fn();
         
@@ -79,7 +73,7 @@ describe("Booking", () => {
           })
         );
     });
-    it("should allow user to select desired guest amount", () => {
+    it("should correctly get the number of players input value from props", () => {
         
         const mockUpdateBookingDetails = vi.fn();
         
@@ -101,7 +95,7 @@ describe("Booking", () => {
           })
         );
     });
-    it("should allow user to select desired lane amount", () => {
+    it("should correctly get the number of lanes input value from props", () => {
         
       const mockUpdateBookingDetails = vi.fn();
       
@@ -122,6 +116,5 @@ describe("Booking", () => {
           })
         })
       );
-      screen.debug()
   });
 })

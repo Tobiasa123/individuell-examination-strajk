@@ -1,19 +1,6 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import App from "./App";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-
-//Användaren ska kunna navigera från bokningsvyn till bekräftelsevyn när bokningen är klar.
-//Användaren ska kunna slutföra bokningen genom att klicka på en "slutför bokning"-knapp.
-//Systemet ska generera ett bokningsnummer och visa detta till användaren efter att bokningen är slutförd.
-//Systemet ska beräkna och visa den totala summan för bokningen baserat på antalet spelare (120 kr per person) samt antalet reserverade banor (100 kr per bana).
-//Användaren ska kunna ta bort ett tidigare valt fält för skostorlek genom att klicka på en "-"-knapp vid varje spelare.
-//Användaren ska kunna ändra skostorlek för varje spelare.
-//Användaren ska kunna ange skostorlek för varje spelare.
-//Det ska vara möjligt att välja skostorlek för alla spelare som ingår i bokningen.
-// ??? Systemet ska visa en översikt där användaren kan kontrollera de valda skostorlekarna för varje spelare innan bokningen slutförs.
-//Användaren ska kunna välja ett datum och en tid från ett kalender- och tidvalssystem.
-//anvädaren ska kunna ange antal spelare (minst 1 spelare).
-//Användaren ska kunna reservera ett eller flera banor beroende på antal spelare.
 
 describe("App", () => {
 

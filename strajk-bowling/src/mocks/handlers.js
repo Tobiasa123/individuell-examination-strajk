@@ -4,7 +4,6 @@ export const handlers = [
   http.post(
     "https://h5jbtjv6if.execute-api.eu-north-1.amazonaws.com",
     async ({ request }) => {
-      console.log("Request received");
       try {
         const requestBody = await request.json();
   

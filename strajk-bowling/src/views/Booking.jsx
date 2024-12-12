@@ -127,11 +127,7 @@ function Booking() {
 
     console.log(!error);
 
-    console.log('Booking info:', bookingInfo);
-
     const confirmation = await sendBooking(bookingInfo);
-
-    console.log('API Response:', confirmation);
 
     await saveConfirmation(confirmation);
 

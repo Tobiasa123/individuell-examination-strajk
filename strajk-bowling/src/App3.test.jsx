@@ -1,8 +1,6 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import App from "./App";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-
-//Om användaren navigerar till bekräftelsevyn och det finns en bokning sparad i session storage ska denna visas.
 
 describe("App", () => {
     it("should keep data saved in sessionstorage so booking stays in confirmation when navigating", async () => {

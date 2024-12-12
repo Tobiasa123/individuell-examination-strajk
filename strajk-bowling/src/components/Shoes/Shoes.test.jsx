@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Shoes from "./Shoes";
 
 describe("Shoes", () => {
-  it("should allow user to change shoe size for each player", () => {
+  it("should call updatesize to change shoe size for players", () => {
     const mockUpdateSize = vi.fn();
     const mockAddShoe = vi.fn();
     const mockRemoveShoe = vi.fn();
@@ -45,7 +45,7 @@ describe("Shoes", () => {
     );
   });
 
-  it("should allow clicking + and - buttons", async () => {
+  it("should allow clicking + and - buttons and call correct functions", async () => {
     const mockUpdateSize = vi.fn();
     const mockAddShoe = vi.fn();
     const mockRemoveShoe = vi.fn();
@@ -74,6 +74,5 @@ describe("Shoes", () => {
     fireEvent.click(deleteBtn);
     expect(mockRemoveShoe).toHaveBeenCalledWith("1");
 
-    //screen.debug()
   });
 });

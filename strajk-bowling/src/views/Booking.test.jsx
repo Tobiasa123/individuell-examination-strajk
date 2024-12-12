@@ -3,11 +3,6 @@ import Booking from "./Booking";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, useNavigate } from "react-router-dom";
 
-//VG - Ifall användaren inte fyller i något av ovanstående så ska ett felmeddelande visas
-//VG - Om det inte finns tillräckligt med lediga banor för det angivna antalet spelare, ska användaren få ett felmeddelande.
-//VG - Om användaren försöker slutföra bokningen utan att ange skostorlek för en spelare som har valt att boka skor, ska systemet visa ett felmeddelande och be om att skostorleken anges.
-//VG - Om antalet personer och skor inte matchas ska ett felmeddelande visas
-
 vi.mock("react-router-dom", async () => {
     const actual = await vi.importActual("react-router-dom");
     return {
@@ -125,6 +120,9 @@ describe("Booking", () => {
         fireEvent.change(screen.getByLabelText(/time/i), { target: { value: '18:00' } });
         fireEvent.change(screen.getByLabelText(/Number of lanes/i), { target: { value: 2 } });
         fireEvent.change(screen.getByLabelText(/Number of awesome bowlers/i), { target: { value: 4 } });
+
+
+        expect(screen.getByLabelText(/Number of lanes/i)).toHaveValue(2)
     
         const addShoeButton = screen.getByRole('button', { name: /\+/ });
         Array.from({ length: 4 }).forEach(() => fireEvent.click(addShoeButton));
@@ -186,4 +184,39 @@ describe("Booking", () => {
         expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
       });
   });
+
+    it("should allow the user to select a date", async () => {
+      render(<Booking />);
+
+      const dateInput = screen.getByLabelText(/date/i);
+      fireEvent.change(dateInput, { target: { value: '2024-12-10' } });
+
+      await waitFor(() => {
+        expect(dateInput).toHaveValue('2024-12-10');
+      });
+    });
+
+    it("should allow the user to select a time", async () => {
+      render(<Booking />);
+
+      const timeInput = screen.getByLabelText(/time/i);
+      fireEvent.change(timeInput, { target: { value: '18:00' } });
+
+      await waitFor(() => {
+        expect(timeInput).toHaveValue('18:00');
+      });
+    });
+
+    it("should allow the user to select the number of players by clicking + button and entering value ", async () => {
+      render(<Booking />);
+      fireEvent.click(screen.getByRole('button', { name: /\+/i }));
+    
+      const playerInput = screen.getAllByRole('textbox')[0]; 
+    
+      fireEvent.change(playerInput, { target: { value: '3' } });
+    
+      await waitFor(() => {
+        expect(playerInput).toHaveValue('3');
+      });
+    });
 })
