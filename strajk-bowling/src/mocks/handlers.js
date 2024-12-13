@@ -7,8 +7,6 @@ export const handlers = [
       try {
         const requestBody = await request.json();
   
-        console.log("Booking info:", requestBody);
-  
         const { when, lanes, people, shoes } = requestBody;
   
         const pricePerPerson = 120; 

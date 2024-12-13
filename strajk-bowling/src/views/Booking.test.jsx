@@ -207,7 +207,7 @@ describe("Booking", () => {
       });
     });
 
-    it("should allow the user to select the number of players by clicking + button and entering value ", async () => {
+    it("should allow the user to select the number of players by clicking + button and entering value to select shoe size ", async () => {
       render(<Booking />);
       fireEvent.click(screen.getByRole('button', { name: /\+/i }));
     
