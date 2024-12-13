@@ -4,7 +4,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 describe("App", () => {
 
-  it("should show confirmation page with correct details after booking", async () => {
+  it("should show confirmation page with correct details after booking using the submit button", async () => {
     render(<App />);
 
     fireEvent.change(screen.getByLabelText(/date/i), { target: { value: '2024-12-10' } });
